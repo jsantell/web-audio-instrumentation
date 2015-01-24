@@ -9,7 +9,7 @@ var manifest = require("./package.json");
 var name = manifest.name;
 
 gulp.task("default", function() {
-  browserify({ standalone: "WebAudioToolsCore" }).add("./index.js")
+  browserify({ standalone: "WebAudioInstrumentation" }).add("./index.js")
   .transform(to5ify)
   .bundle()
   .on("error", gutil.log.bind(gutil, "Browserify Error"))

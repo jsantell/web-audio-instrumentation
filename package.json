@@ -1,7 +1,7 @@
 {
-  "name": "wa-tools-core",
+  "name": "web-audio-instrumentation",
   "version": "1.0.0",
-  "description": "Core for Web Audio Tools",
+  "description": "Instrumentation for Web Audio API",
   "main": "index.js",
   "scripts": {},
   "author": "Jordan Santell",

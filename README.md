@@ -1,12 +1,12 @@
-# wa-tools-core
+# web-audio-instrumentation
 
-The core of Web Audio Tools. Instruments methods in the Web Audio API and emits events for all activity of state.
+The backbone of Web Audio Tools. Instruments methods in the Web Audio API and emits events for all activity of state.
 
 ## API
 
-### new WebAudioToolsCore()
+### new WebAudioInstrumentation()
 
-Creates a new instance of the WebAudioToolsCore. Inherits from `EventEmitter`.
+Creates a new instance of the WebAudioInstrumentation. Inherits from `EventEmitter`.
 
 ### core.instrument(global)
 
@@ -49,8 +49,8 @@ Takes either an AudioNode or an ID (created by the instrumentation), and returns
 ## Example
 
 ```js
-var WebAudioToolsCore = require("wa-tools-core");
-var core = new WebAudioToolsCore();
+var WebAudioInstrumentation = require("wa-tools-core");
+var core = new WebAudioInstrumentation();
 core.instrument(window);
 
 core.on("create-node", (node) => {
@@ -70,7 +70,7 @@ var gain = ctx.createGain();
 
 ## Build
 
-Run `gulp`, as `./build/wa-tools-core.js` is created. If using source, requires [6to5](https://6to5.org/) transformation.
+Run `gulp`, as `./build/web-audio-instrumentation.js` is created. If using source, requires [6to5](https://6to5.org/) transformation.
 
 ## License
 

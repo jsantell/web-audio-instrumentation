@@ -6,27 +6,27 @@ var AudioNodeModel = require("./lib/audionode");
 var utils = require("./lib/utils");
 
 /**
- * Expose `WebAudioToolsCore`.
+ * Expose `WebAudioInstrumentation`.
  */
-module.exports = WebAudioToolsCore;
+module.exports = WebAudioInstrumentation;
 
 /**
- * WebAudioToolsCore constructor.
+ * WebAudioInstrumentation constructor.
  */
-function WebAudioToolsCore () {
+function WebAudioInstrumentation () {
   this.nodes = new Map();
 }
 
 /**
  * Inherits from `EventEmitter`.
  */
-util.inherits(WebAudioToolsCore, EventEmitter);
+util.inherits(WebAudioInstrumentation, EventEmitter);
 
 /**
  * Takes a number or a AudioNode and returns the corresponding
  * `AudioNodeModel`.
  */
-WebAudioToolsCore.prototype.getNode = function (data) {
+WebAudioInstrumentation.prototype.getNode = function (data) {
   // If `data` is a number, iterate over the map looking
   // for a matching ID
   if (typeof data === "number") {
@@ -48,7 +48,7 @@ WebAudioToolsCore.prototype.getNode = function (data) {
  * Must be called before creating an AudioNodes in order to track
  * state.
  */
-WebAudioToolsCore.prototype.instrument = function (constructors) {
+WebAudioInstrumentation.prototype.instrument = function (constructors) {
   var ctors = this.constructors = constructors || {};
 
   var contextCtor = (ctors.AudioContext || ctors.webkitAudioContext);
