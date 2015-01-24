@@ -2,6 +2,10 @@
 
 The backbone of Web Audio Tools. Instruments methods in the Web Audio API and emits events for all activity of state.
 
+## Caveats
+
+This library needs to maintain an internal, iterable list of AudioNodes created in the context. This means all the nodes are strongly held, and never GC'd. Obviously a big problem for complex applications, but this is mostly for debugging.
+
 ## API
 
 ### new WebAudioInstrumentation()
