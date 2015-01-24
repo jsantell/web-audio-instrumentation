@@ -72,6 +72,10 @@ var gain = ctx.createGain();
 
 Run `gulp`, as `./build/web-audio-instrumentation.js` is created. If using source, requires [6to5](https://6to5.org/) transformation.
 
+## Testing
+
+Because phantomjs does not have `AudioContext`, run `./test/index.html` in a browser. Hooray.
+
 ## License
 
 MIT License, Copyright (c) 2015 Jordan Santell
