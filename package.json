@@ -1,0 +1,25 @@
+{
+  "name": "wa-tools-core",
+  "version": "1.0.0",
+  "description": "Core for Web Audio Tools",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Jordan Santell",
+  "license": "MIT",
+  "devDependencies": {
+    "6to5ify": "^3.1.2",
+    "browserify": "^8.1.1",
+    "gulp": "^3.8.10",
+    "gulp-sourcemaps": "^1.3.0",
+    "gulp-uglify": "^1.1.0",
+    "gulp-util": "^3.0.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0",
+    "chai": "~1.10.0",
+    "mocha": "~2.1.0"
+  },
+  "dependencies": {
+    "instrument-fn": "^1.0.1",
+    "clone": "~0.2.0"
+  }
+}
