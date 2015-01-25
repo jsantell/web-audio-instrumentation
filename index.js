@@ -30,7 +30,7 @@ WebAudioInstrumentation.prototype.getNode = function (data) {
   // If `data` is a number, iterate over the map looking
   // for a matching ID
   if (typeof data === "number") {
-    for (let [node, model] of this.nodes) {
+    for (var [node, model] of this.nodes) {
       if (model.id === data) {
         return model;
       }
@@ -64,36 +64,45 @@ WebAudioInstrumentation.prototype.instrument = function (constructors) {
   instrument(ctors.AudioParam.prototype, automateParam.bind(this), methods.AUTOMATION_METHODS);
 };
 
-function createNode ({ caller, args, name, result }) {
-  var node = new AudioNodeModel(result);
-  this.nodes.set(result, node);
+function createNode (data) {
+  var node = new AudioNodeModel(data.result);
+
+  // If no destination model created yet..
+  if (!this._destinationCreated) {
+    var dest = new AudioNodeModel(data.caller.destination);
+    this.nodes.set(data.caller.destination, dest);
+    this.emit("create-node", dest);
+    this._destinationCreated = true;
+  }
+
+  this.nodes.set(data.result, node);
   this.emit("create-node", node);
 }
 
-function routeNode ({ caller, args, name }) {
-  var source = this.getNode(caller);
+function routeNode (data) {
+  var source = this.getNode(data.caller);
 
-  if (name === "disconnect") {
-    this.emit("disconnect-node", source, args[0]);
+  if (data.name === "disconnect") {
+    this.emit("disconnect-node", source, data.args[0]);
   } else {
-    var output = args[1];
-    var input = args[2];
+    var output = data.args[1];
+    var input = data.args[2];
     var dest, param;
 
-    if (utils.getConstructorName(args[0]) === "AudioParam") {
-      param = args[0];
+    if (utils.getConstructorName(data.args[0]) === "AudioParam") {
+      param = data.args[0];
       dest = this.getNode(param._parentID);
       this.emit("connect-param", source, dest, param._paramName, output);
     } else {
-      dest = this.getNode(args[0]);
+      dest = this.getNode(data.args[0]);
       this.emit("connect-node", source, dest, output, input);
     }
   }
 }
 
-function automateParam ({ caller, args, name }) {
-  var node = this.getNode(caller._parentID);
-  var paramName = caller._paramName;
-  var eventName = name;
-  this.emit("schedule-automation", node, paramName, eventName, args);
+function automateParam (data) {
+  var node = this.getNode(data.caller._parentID);
+  var paramName = data.caller._paramName;
+  var eventName = data.name;
+  this.emit("schedule-automation", node, paramName, eventName, data.args);
 }
