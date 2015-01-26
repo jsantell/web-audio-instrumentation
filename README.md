@@ -18,7 +18,7 @@ Prepares the core to patch AudioContext, AudioNode and AudioParam methods. Gener
 
 ### core.getNode(nodeOrID)
 
-Takes either an AudioNode or an ID (created by the instrumentation), and returns an [AudioNodeModel](https://github.com/jsantell/wa-tools-core/blob/master/lib/audionode.js). This is mostly used internally.
+Takes either an AudioNode or an ID (created by the instrumentation), and returns an [AudioNodeModel](https://github.com/jsantell/web-audio-instrumentation/blob/master/lib/audionode.js). This is mostly used internally.
 
 ### event: "create-node"
 
