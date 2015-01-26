@@ -53,7 +53,7 @@ Takes either an AudioNode or an ID (created by the instrumentation), and returns
 ## Example
 
 ```js
-var WebAudioInstrumentation = require("wa-tools-core");
+var WebAudioInstrumentation = require("web-audio-instrumentation");
 var core = new WebAudioInstrumentation();
 core.instrument(window);
 
